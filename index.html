@@ -31,38 +31,50 @@
             z-index: 5 !important;
         }
 
-        /* Efecto de Globos Regulados y Rápidos */
+        /* Efecto de Globos de Graduación Elegantes */
         .balloon {
             position: fixed;
             bottom: -100px;
-            width: 35px;
-            height: 44px;
+            width: 38px;
+            height: 46px;
             border-radius: 50%;
             z-index: 1000;
             opacity: 1;
-            animation: floatUpFast 2s ease-in forwards;
+            animation: floatUpFast 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.2);
         }
         .balloon::before { 
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -5px;
             left: 50%;
             transform: translateX(-50%);
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-bottom: 6px solid inherit;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid currentColor;
+        }
+        /* Hilo del globo */
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            width: 1px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
         }
 
         @keyframes floatUpFast {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            80% { opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(20deg); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-130vh) rotate(25deg); opacity: 0; }
         }
 
-        /* AJUSTE DEL CARRUSEL PARA FOTOS RECTANGULARES (SIN RECORTAR) */
+        /* AJUSTE DEL CARRUSEL PARA FOTOS RECTANGULARES */
         .carrusel-contenedor {
             position: relative;
-            max-width: 750px; /* Un poco más ancho para lucir las fotos rectangulares */
+            max-width: 750px; 
             margin: 0 auto;
         }
         .overflow-hidden-carousel { 
@@ -71,7 +83,7 @@
             border-radius: 1.5rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(15, 23, 42, 0.6); /* Fondo oscuro integrado para los bordes */
+            background: rgba(15, 23, 42, 0.6); 
         }
         .carousel-track { 
             display: flex; 
@@ -83,7 +95,7 @@
             min-width: 100%; 
             width: 100%; 
             flex-shrink: 0; 
-            aspect-ratio: 4/3; /* Formato rectangular estándar de fotografía horizontal */
+            aspect-ratio: 4/3; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -91,7 +103,7 @@
         .foto-item img { 
             width: 100%; 
             height: 100%; 
-            object-fit: contain; /* ¡CORRECCIÓN AQUÍ! Muestra la foto rectangular completa sin recortes */
+            object-fit: contain; 
         }
 
         /* Botones de navegación pequeños abajo */
@@ -164,7 +176,15 @@
     <main id="contenidoPrincipal" class="opacity-0 transition-opacity duration-1000">
         
         <section class="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-[#0f172a]">
-            <div data-aos="fade-up" class="max-w-4xl">
+            <!-- ESCUDO DE LA ESCUELA AGREGADO Y CENTRADO -->
+            <div class="mb-6 flex justify-center" data-aos="fade-up">
+                <img src="img/ESCUDOPRIMARIA.png" alt="Escudo Escuela" class="max-w-[120px] h-auto object-contain drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">
+            </div>
+
+            <div class="mb-4 text-center tracking-widest text-sm md:text-base text-blue-400 font-semibold uppercase" data-aos="fade-up" data-aos-delay="100">
+                Turno Matutino &bull; Clave: 07EPR0153T
+            </div>
+            <div class="max-w-4xl" data-aos="fade-up" data-aos-delay="200">
                 <h2 class="font-serif text-2xl md:text-4xl text-yellow-500 mb-2 uppercase tracking-tighter">Escuela Primaria</h2>
                 <h1 class="font-serif text-5xl md:text-7xl text-white mb-12 italic">"Mi Patria es Primero"</h1>
                 <div class="p-8 border-t border-b border-yellow-600/30 bg-white/5 rounded-3xl">
@@ -177,7 +197,7 @@
         </section>
 
         <section class="min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-[#0f172a] to-[#1e3a8a]">
-            <div data-aos="zoom-in">
+            <div data-aos="fade-up">
                 <h2 class="text-8xl md:text-[12rem] font-serif text-white mb-4 italic leading-none">6° "B"</h2>
                 <p class="text-blue-100 text-2xl md:text-3xl tracking-[0.3em] uppercase opacity-70">
                     Generación <br> <span class="whitespace-nowrap">2020 - 2026</span>
@@ -186,11 +206,11 @@
         </section>
 
         <!-- SECCIÓN DE GALERÍA -->
-        <section class="py-24 bg-white/5 text-center px-4">
+        <section class="py-24 bg-white/5 text-center px-4 mb-20">
             <h2 class="font-serif text-4xl text-white italic mb-4" data-aos="fade-up">Galería de Recuerdos</h2>
-            <p class="text-gray-400 text-sm mb-10 max-w-xs mx-auto" data-aos="fade-up">Momentos inolvidables de nuestra trayectoria escolar.</p>
+            <p class="text-gray-400 text-sm mb-10 max-w-xs mx-auto" data-aos="fade-up" data-aos-delay="100">Momentos inolvidables de nuestra trayectoria escolar.</p>
             
-            <div class="carrusel-contenedor" data-aos="zoom-in">
+            <div class="carrusel-contenedor" data-aos="fade-up" data-aos-delay="200">
                 <div class="overflow-hidden-carousel">
                     <div id="carousel" class="carousel-track">
                         <div class="foto-item"><img src="img/imagen1.jpg" alt="Momento 1"></div>
@@ -200,7 +220,6 @@
                     </div>
                 </div>
                 
-                <!-- Flechas estéticas abajo del contenedor -->
                 <div class="nav-btn-container">
                     <button class="nav-btn-mini" onclick="moveCarousel(-1)" aria-label="Anterior">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
@@ -212,170 +231,213 @@
             </div>
         </section>
 
-        <!-- Sección de Graduados -->
-        <section class="py-24 bg-[#0f172a] px-6">
+        <!-- Sección de Invitación Formal e Información -->
+        <section class="py-24 bg-gradient-to-b from-[#0f172a] to-slate-900 px-6 text-center border-t border-white/5">
+            <div class="max-w-3xl mx-auto">
+                <p class="font-serif text-2xl md:text-3xl text-yellow-500 italic mb-12 leading-relaxed" data-aos="fade-up">
+                    Los alumnos del Sexto Grado Grupo “A”, “B” y “C” tienen el honor de invitarle a la Ceremonia de Entrega de Documentos a la Generación 2020 – 2026.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-white/90" data-aos="fade-up" data-aos-delay="150">
+                    <div class="space-y-2 p-6 bg-white/5 rounded-2xl border border-white/5 shadow-lg">
+                        <span class="text-yellow-600 block text-xs tracking-widest uppercase font-bold">Lugar</span>
+                        <p class="text-lg font-semibold">El domo de nuestra institución</p>
+                    </div>
+                    <div class="space-y-2 p-6 bg-white/5 rounded-2xl border border-white/5 shadow-lg">
+                        <span class="text-yellow-600 block text-xs tracking-widest uppercase font-bold">Fecha</span>
+                        <p class="text-lg font-semibold">14 de Julio del 2026</p>
+                    </div>
+                    <div class="space-y-2 p-6 bg-white/5 rounded-2xl border border-white/5 shadow-lg">
+                        <span class="text-yellow-600 block text-xs tracking-widest uppercase font-bold">Hora</span>
+                        <p class="text-lg font-semibold">8:00 AM</p>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: ORDEN DEL PROGRAMA -->
+                <div class="mt-16 text-left max-w-2xl mx-auto border border-yellow-600/20 bg-slate-900/60 p-8 rounded-3xl shadow-xl" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif text-3xl text-yellow-500 text-center mb-8 italic border-b border-yellow-600/20 pb-4">Orden del Programa</h3>
+                    <ul class="space-y-4 text-sm md:text-base text-gray-300">
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">1.</span> <span>Recepción de invitados.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">2.</span> <span>Entrada de los alumnos de sexto grado “A”, “B” y “C”.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">3.</span> <span>Honores a la bandera.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">4.</span> <span>Presentación de la mesa del presídium.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">5.</span> <span>Mensaje de Bienvenida por la directora de la escuela Dra. Deysi Cabrera Pascacio.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">6.</span> <span>Entrega de Reconocimientos a los niños más destacados.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">7.</span> <span>Entrega de Documentos a los alumnos que egresan del sexto grado grupos “A”, “B” y “C” del Ciclo Escolar 2020 – 2026.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">8.</span> <span>Palabras de Despedida por la alumna Díaz Zebadúa Keren Yesenia del sexto grado grupo “C”.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">9.</span> <span>Marcha de los alumnos que egresan.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">10.</span> <span>Canto de despedida de los alumnos que egresan.</span></li>
+                        <li class="flex items-start gap-3"><span class="text-yellow-500 font-bold">11.</span> <span>Clausura del Ciclo Escolar 2025–2026 por la directora de la escuela Dra. Deysi Cabrera Pascacio.</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE GRADUADOS -->
+        <section class="py-24 bg-[#0f172a] px-6 border-t border-white/5">
             <div class="max-w-4xl mx-auto" data-aos="fade-up">
                 <h2 class="font-serif text-4xl text-center text-white italic mb-16">Graduados</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
                     <!-- 1 -->
-                    <div onclick="abrirModal('AGUILAR GUZMAN JADEN NATANAEL', 'SRA. MARIA LIBNY REYES HERNANDEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('AGUILAR GUZMAN JADEN NATANAEL', 'SRA. MARIA LIBNY REYES HERNANDEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">AGUILAR GUZMAN JADEN NATANAEL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 2 -->
-                    <div onclick="abrirModal('ALVARADO PEREZ BRANDON ALEXIS', 'SRA. MONICA PEREZ MORALES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('ALVARADO PEREZ BRANDON ALEXIS', 'SRA. MONICA PEREZ MORALES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">ALVARADO PEREZ BRANDON ALEXIS</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 3 -->
-                    <div onclick="abrirModal('CABRERA PEREZ TADEO EMMANUEL', 'SR. LUIS ALBERTO CABRERA SANCHEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('CABRERA PEREZ TADEO EMMANUEL', 'SR. LUIS ALBERTO CABRERA SANCHEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">CABRERA PEREZ TADEO EMMANUEL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 4 -->
-                    <div onclick="abrirModal('CHACON DE LA CRUZ MAXIMILIANO', 'SR. CRISTOBAL CHACON RAMIREZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('CHACON DE LA CRUZ MAXIMILIANO', 'SR. CRISTOBAL CHACON RAMIREZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">CHACON DE LA CRUZ MAXIMILIANO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 5 -->
-                    <div onclick="abrirModal('CHAME DE LA CRUZ SANTIAGO JARED', 'ING. RUDY GERARDO CHAME CRUZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('CHAME DE LA CRUZ SANTIAGO JARED', 'ING. RUDY GERARDO CHAME CRUZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">CHAME DE LA CRUZ SANTIAGO JARED</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 6 -->
-                    <div onclick="abrirModal('CRISOSTOMO GARCIA EMILY ABIGAIL', 'LIC. ANGEL GARCIA AGUILAR.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('CRISOSTOMO GARCIA EMILY ABIGAIL', 'LIC. ANGEL GARCIA AGUILAR.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">CRISOSTOMO GARCIA EMILY ABIGAIL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 7 -->
-                    <div onclick="abrirModal('CRUZ RUIZ EVELYN YARELI', 'SRA. RUBY PEREZ MONTOYA Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('CRUZ RUIZ EVELYN YARELI', 'SRA. RUBY PEREZ MONTOYA Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">CRUZ RUIZ EVELYN YARELI</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 8 -->
-                    <div onclick="abrirModal('FERNANDEZ DE LARA JUAREZ WILLIAM', 'SRA. GUILLERMINA CRUZ GOMEZ Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('FERNANDEZ DE LARA JUAREZ WILLIAM', 'SRA. GUILLERMINA CRUZ GOMEZ Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">FERNANDEZ DE LARA JUAREZ WILLIAM</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 9 -->
-                    <div onclick="abrirModal('HERNANDEZ GOMEZ STEFANY MONSERRATH', 'LIC. UCIEL HERNANDEZ PERALTA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('HERNANDEZ GOMEZ STEFANY MONSERRATH', 'LIC. UCIEL HERNANDEZ PERALTA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">HERNANDEZ GOMEZ STEFANY MONSERRATH</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 10 -->
-                    <div onclick="abrirModal('HERNANDEZ MEZA VALENTINA', 'SR. HERNAN GABRIEL GONZALEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('HERNANDEZ MEZA VALENTINA', 'SR. HERNAN GABRIEL GONZALEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">HERNANDEZ MEZA VALENTINA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 11 -->
-                    <div onclick="abrirModal('JIMENEZ HERNANDEZ EMILY ESTEFANNYA', 'SR. JOSE LUIS MENDEZ ALVARO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('JIMENEZ HERNANDEZ EMILY ESTEFANNYA', 'SR. JOSE LUIS MENDEZ ALVARO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">JIMENEZ HERNANDEZ EMILY ESTEFANNYA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 12 -->
-                    <div onclick="abrirModal('LOPEZ JIMENEZ JOSE EMMANUEL', 'PROFR. GERARDO NATALIO CANABERAL RAMOS.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('LOPEZ JIMENEZ JOSE EMMANUEL', 'PROFR. GERARDO NATALIO CANABERAL RAMOS.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">LOPEZ JIMENEZ JOSE EMMANUEL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 13 -->
-                    <div onclick="abrirModal('LOPEZ VAZQUEZ EVELYN ALEJANDRA', 'LIC. NEREYDA GUADALUPE LOPEZ VAZQUEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('LOPEZ VAZQUEZ EVELYN ALEJANDRA', 'LIC. NEREYDA GUADALUPE LOPEZ VAZQUEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">LOPEZ VAZQUEZ EVELYN ALEJANDRA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 14 -->
-                    <div onclick="abrirModal('MADRID CORTES ATAEL RODRIGO', 'SRA. BLANCA LIZETH MADRID GUMETA Y ABUELITA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MADRID CORTES ATAEL RODRIGO', 'SRA. BLANCA LIZETH MADRID GUMETA Y ABUELITA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MADRID CORTES ATAEL RODRIGO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 15 -->
-                    <div onclick="abrirModal('MARTINEZ LOPEZ RAUL ALBERTO', 'SRITA. JILARY GARCIA LOPEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MARTINEZ LOPEZ RAUL ALBERTO', 'SRITA. JILARY GARCIA LOPEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MARTINEZ LOPEZ RAUL ALBERTO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 16 -->
-                    <div onclick="abrirModal('MARTINEZ LOPEZ SOFIA', 'SRA. MARBEY ESCOBAR GOMEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MARTINEZ LOPEZ SOFIA', 'SRA. MARBEY ESCOBAR GOMEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MARTINEZ LOPEZ SOFIA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 17 -->
-                    <div onclick="abrirModal('MATEO GOMEZ NESTOR DAVID', 'SRITA. GENESIS GUADALUPE MARQUEZ GOMEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MATEO GOMEZ NESTOR DAVID', 'SRITA. GENESIS GUADALUPE MARQUEZ GOMEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MATEO GOMEZ NESTOR DAVID</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 18 -->
-                    <div onclick="abrirModal('MAZA SANCHEZ JAVIER ANTONIO', 'LIC. RAFAEL RODRIGUEZ DE LA CRUZ Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MAZA SANCHEZ JAVIER ANTONIO', 'LIC. RAFAEL RODRIGUEZ DE LA CRUZ Y ESPOSO.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MAZA SANCHEZ JAVIER ANTONIO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 19 -->
-                    <div onclick="abrirModal('MAZARIEGOS ZENTENO BRITTANY VANESSA', 'SRA. JACQUELINE ZENTENO MARTINEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MAZARIEGOS ZENTENO BRITTANY VANESSA', 'SRA. JACQUELINE ZENTENO MARTINEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MAZARIEGOS ZENTENO BRITTANY VANESSA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 20 -->
-                    <div onclick="abrirModal('MENDOZA PEREZ ANGEL DANIEL', 'SR. MIGUEL ANGEL GOMEZ TORREZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MENDOZA PEREZ ANGEL DANIEL', 'SR. MIGUEL ANGEL GOMEZ TORREZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MENDOZA PEREZ ANGEL DANIEL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 21 -->
-                    <div onclick="abrirModal('MORALES MARTINEZ ELIAS SANTIAGO', 'ING. EDDY MAURICIO DOMINGUEZ MORALES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('MORALES MARTINEZ ELIAS SANTIAGO', 'ING. EDDY MAURICIO DOMINGUEZ MORALES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">MORALES MARTINEZ ELIAS SANTIAGO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 22 -->
-                    <div onclick="abrirModal('OLIVAS ACOSTA JOSHUA SANTIAGO', 'BIOLOGA. ZAYDE GUADALUPE HERNANDEZ JIMENEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('OLIVAS ACOSTA JOSHUA SANTIAGO', 'BIOLOGA. ZAYDE GUADALUPE HERNANDEZ JIMENEZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">OLIVAS ACOSTA JOSHUA SANTIAGO</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 23 -->
-                    <div onclick="abrirModal('RALDA SANCHEZ MANUEL ALEXANDER', 'LIC. RASAICELA DE PAZ CHAN.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('RALDA SANCHEZ MANUEL ALEXANDER', 'LIC. RASAICELA DE PAZ CHAN.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">RALDA SANCHEZ MANUEL ALEXANDER</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 24 -->
-                    <div onclick="abrirModal('RAMOS HERNANDEZ ALEXA ESMERALDA', 'LIC. VERONICA JAZMIN ALVARADO CACERES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('RAMOS HERNANDEZ ALEXA ESMERALDA', 'LIC. VERONICA JAZMIN ALVARADO CACERES.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">RAMOS HERNANDEZ ALEXA ESMERALDA</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 25 -->
-                    <div onclick="abrirModal('RICARDO MENDOZA AXEL ITZEN', 'C.P. ALEXIS FERNANDO OVIANDO RUIZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('RICARDO MENDOZA AXEL ITZEN', 'C.P. ALEXIS FERNANDO OVIANDO RUIZ.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">RICARDO MENDOZA AXEL ITZEN</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 26 -->
-                    <div onclick="abrirModal('RUIZ RUIZ CARLOS AXEL', 'SRA. BRENDA BEATRIZ RUIZ BISA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('RUIZ RUIZ CARLOS AXEL', 'SRA. BRENDA BEATRIZ RUIZ BISA.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">RUIZ RUIZ CARLOS AXEL</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
                     
                     <!-- 27 -->
-                    <div onclick="abrirModal('VAZQUEZ CRUZ ITALIA MICHELLE', 'SRA. FLOR HERNANDEZ CALDERON.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group">
+                    <div onclick="abrirModal('VAZQUEZ CRUZ ITALIA MICHELLE', 'SRA. FLOR HERNANDEZ CALDERON.')" class="p-5 border border-white/10 rounded-2xl bg-white/5 flex justify-between items-center cursor-pointer hover:bg-white/10 hover:border-yellow-600/40 transition-all duration-300 group" data-aos="fade-up">
                         <div><h3 class="text-white font-bold uppercase text-sm md:text-base group-hover:text-yellow-500 transition-colors">VAZQUEZ CRUZ ITALIA MICHELLE</h3><p class="text-blue-300 italic text-xs mt-1">Ver Padrino</p></div>
                         <span class="text-xl group-hover:scale-110 transition-transform">🎓</span>
                     </div>
@@ -384,176 +446,166 @@
             </div>
         </section>
 
-        <!-- Sección de Invitación y Firmas -->
-        <section class="py-24 bg-gradient-to-b from-[#0f172a] to-black px-6 text-center">
-            <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                <p class="font-serif text-2xl md:text-3xl text-yellow-500 italic mb-8">
-                    Tenemos el honor de invitarte a la solemne ceremonia de graduación
+        <!-- SECCIÓN: REFLEXIÓN / FÁBULA -->
+        <section class="py-24 bg-gradient-to-b from-[#0f172a] to-black text-center px-6 border-t border-white/5">
+            <div class="max-w-2xl mx-auto py-4" data-aos="fade-up">
+                <span class="text-4xl block mb-4">🌳🦉</span>
+                <p class="text-lg text-gray-300 italic leading-relaxed font-light">
+                    "Había una vez un frondoso bosque donde vivía un grupo de pequeños ruiseñores. Al llegar al nido, apenas sabían piar y sus alas eran débiles. Durante seis maravillosos años, sus maestros les enseñaron a cantar las notas de la paciencia, a leer el mapa de los vientos y a perder el miedo a las alturas."
                 </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-white/90">
-                    <div class="space-y-2">
-                        <span class="text-yellow-600 block text-xs tracking-widest uppercase">Lugar</span>
-                        <p class="text-lg font-semibold">Instalaciones de la Escuela</p>
-                    </div>
-                    <div class="space-y-2">
-                        <span class="text-yellow-600 block text-xs tracking-widest uppercase">Fecha</span>
-                        <p class="text-lg font-semibold">14 de Julio, 2026</p>
-                    </div>
-                    <div class="space-y-2">
-                        <span class="text-yellow-600 block text-xs tracking-widest uppercase">Hora</span>
-                        <p class="text-lg font-semibold">08:00 AM</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row justify-center gap-12 md:gap-24 pt-12 border-t border-white/10">
-                    <div>
-                        <p class="text-white font-semibold text-lg underline underline-offset-8 decoration-yellow-600/50">HERNAN HERNANDEZ ESCOBAR</p>
-                        <p class="text-blue-300 text-xs mt-2 uppercase tracking-widest">Prof. de Grupo</p>
-                    </div>
-                    <div>
-                        <p class="text-white font-semibold text-lg underline underline-offset-8 decoration-yellow-600/50">DRA. DEYSI CABRERA PASCACIO</p>
-                        <p class="text-blue-300 text-xs mt-2 uppercase tracking-widest">Directora del Plantel</p>
-                    </div>
-                </div>
-
-                <!-- SECCIÓN: Datos del Diseñador -->
-                <div class="mt-32 opacity-40 scale-90 space-y-0.5">
-                    <p class="text-white text-[8px] tracking-[0.3em] uppercase font-light">Diseño y Desarrollo</p>
-                    <p class="text-yellow-500 font-semibold text-xs tracking-widest">ING. ALEJANDRA JIMENEZ | COMPUTEC</p>
-                    <p class="text-blue-200 text-[10px] tracking-wide">961 257 7561</p>
+                <p class="text-lg text-gray-300 italic leading-relaxed font-light mt-4">
+                    "Un día de verano, el viejo sabio del bosque les anunció que el tiempo en ese nido había terminado. Los ruiseñores sintieron miedo de dejar su rama segura. Sin embargo, al extender sus alas, descubrieron que ya no eran pequeños ni débiles; el nido les quedaba chico porque sus sueños habían crecido."
+                </p>
+                <p class="text-lg text-gray-300 italic leading-relaxed font-light mt-4">
+                    "Con un canto de gratitud, se lanzaron al cielo, listos para conquistar horizontes más altos."
+                </p>
+                <div class="mt-8 p-4 bg-yellow-600/10 border border-yellow-500/20 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-yellow-500 font-semibold uppercase text-xs tracking-widest mb-1">Moraleja</p>
+                    <p class="text-amber-200 italic text-sm md:text-base">
+                        El final de un camino es solo el impulso para volar más alto. El conocimiento y el esfuerzo son las alas que te llevarán a donde desees.
+                    </p>
                 </div>
             </div>
         </section>
+
     </main>
+
+    <!-- Audio de Fondo -->
+    <audio id="bgMusic" loop>
+        <source src="Count-on-Me.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-        const audio = new Audio('Count-on-Me.mp3'); 
-        audio.loop = true;
-        let isPlaying = false;
+        // Inicialización de AOS
+        AOS.init({ 
+            duration: 1000, 
+            once: true,
+            mirror: false
+        });
+
+        const pantallaSobre = document.getElementById('pantallaSobre');
+        const contenidoPrincipal = document.getElementById('contenidoPrincipal');
+        const flap = document.getElementById('flap');
+        const sello = document.getElementById('sello');
         const musicBtn = document.getElementById('musicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const bgMusic = document.getElementById('bgMusic');
 
-        // Función de Globos
-        function createBalloons() {
-            const colors = ['#fbbf24', '#ffffff', '#1e40af', '#60a5fa'];
-            for (let i = 0; i < 15; i++) {
+        let musicPlaying = false;
+        musicBtn.addEventListener('click', () => {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('spinning');
+            } else {
+                bgMusic.play().catch(e => console.log("Error al reproducir audio:", e));
+                musicIcon.classList.add('spinning');
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        sello.addEventListener('click', () => {
+            flap.classList.add('flap-open');
+            sello.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                pantallaSobre.classList.add('opacity-0');
+                document.body.classList.remove('no-scroll');
+                contenidoPrincipal.classList.remove('opacity-0');
+                musicBtn.classList.remove('hidden');
+                
+                bgMusic.play().then(() => {
+                    musicPlaying = true;
+                    musicIcon.classList.add('spinning');
+                }).catch(err => console.log("Interacción requerida para audio"));
+
+                lanzarRáfagaGlobos();
+
                 setTimeout(() => {
-                    const balloon = document.createElement('div');
-                    balloon.classList.add('balloon');
-                    balloon.style.left = `${Math.random() * 100}vw`;
-                    
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    balloon.style.backgroundColor = randomColor;
-                    balloon.style.borderColor = randomColor;
+                    pantallaSobre.classList.add('hidden');
+                    AOS.refresh();
+                }, 1000);
+            }, 800);
+        });
 
-                    const duration = 2 + Math.random() * 1.5;
-                    balloon.style.animationDuration = `${duration}s`;
+        function crearGloboGraduacion() {
+            const coloresGraduacion = ['#d97706', '#1e293b', '#f8fafc', '#94a3b8', 'rgba(217, 119, 6, 0.6)'];
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            
+            const colorAleatorio = coloresGraduacion[Math.floor(Math.random() * coloresGraduacion.length)];
+            balloon.style.backgroundColor = colorAleatorio;
+            balloon.style.color = colorAleatorio; 
+            balloon.style.left = (Math.random() * 95) + 'vw';
+            
+            const escala = 0.8 + Math.random() * 0.5;
+            balloon.style.transform = `scale(${escala})`;
+            balloon.style.animationDuration = (1.8 + Math.random() * 1.2) + 's';
 
-                    document.body.appendChild(balloon);
-                    setTimeout(() => balloon.remove(), duration * 1000);
-                }, i * 180);
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 3000);
+        }
+
+        function lanzarRáfagaGlobos() {
+            for(let i = 0; i < 35; i++) {
+                setTimeout(crearGloboGraduacion, i * 60);
             }
         }
 
-        // Evento de apertura del sobre
-        document.getElementById('sello').addEventListener('click', () => {
-            const flap = document.getElementById('flap');
-            flap.classList.add('flap-open');
+        const modalAlumno = document.getElementById('modalAlumno');
+        const modalNombre = document.getElementById('modalNombre');
+        const modalPadrino = document.getElementById('modalPadrino');
 
+        function abrirModal(nombre, padrino) {
+            modalNombre.innerText = nombre;
+            modalPadrino.innerText = "Padrino/Madrina: " + padrino;
+            modalAlumno.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
             setTimeout(() => {
-                const pantallaSobre = document.getElementById('pantallaSobre');
-                pantallaSobre.classList.add('opacity-0', 'pointer-events-none');
-                
-                const contenidoPrincipal = document.getElementById('contenidoPrincipal');
-                contenidoPrincipal.classList.remove('opacity-0');
-                
-                document.body.classList.remove('no-scroll');
-                musicBtn.classList.remove('hidden');
+                modalAlumno.classList.add('opacity-100');
+                modalAlumno.querySelector('div').classList.remove('scale-95');
+                modalAlumno.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
 
-                audio.play().then(() => {
-                    isPlaying = true;
-                    document.getElementById('musicIcon').classList.add('spinning');
-                }).catch(error => console.log("La reproducción interactiva requiere acción inicial del usuario."));
+        function cerrarModal() {
+            modalAlumno.classList.remove('opacity-100');
+            modalAlumno.querySelector('div').classList.remove('scale-100');
+            modalAlumno.querySelector('div').classList.add('scale-95');
+            document.body.classList.remove('no-scroll');
+            setTimeout(() => {
+                modalAlumno.classList.add('hidden');
+            }, 300);
+        }
 
-                createBalloons();
-            }, 1000);
+        modalAlumno.addEventListener('click', (e) => {
+            if(e.target === modalAlumno) cerrarModal();
         });
 
-        // Control de Música
-        musicBtn.addEventListener('click', () => {
-            const musicIcon = document.getElementById('musicIcon');
-            if (isPlaying) {
-                audio.pause();
-                musicIcon.classList.remove('spinning');
-            } else {
-                audio.play();
-                musicIcon.classList.add('spinning');
-            }
-            isPlaying = !isPlaying;
-        });
-
-        /* LÓGICA DEL CARRUSEL CORREGIDA E INFINITA */
         let currentIndex = 0;
         const track = document.getElementById('carousel');
-        const totalItems = document.querySelectorAll('.foto-item').length;
-        let autoPlayInterval = null;
+        const items = document.querySelectorAll('.foto-item');
+        const totalItems = items.length;
 
         function moveCarousel(direction) {
             currentIndex += direction;
-            
             if (currentIndex < 0) {
                 currentIndex = totalItems - 1;
             } else if (currentIndex >= totalItems) {
                 currentIndex = 0;
             }
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            const percentage = -(currentIndex * 100);
+            track.style.transform = `translateX(${percentage}%)`;
         }
 
-        // Sistema dinámico de Autoplay mediante Scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (!autoPlayInterval) {
-                        autoPlayInterval = setInterval(() => {
-                            moveCarousel(1);
-                        }, 3000);
-                    }
-                } else {
-                    clearInterval(autoPlayInterval);
-                    autoPlayInterval = null;
-                }
-            });
-        }, { threshold: 0.3 });
-
-        observer.observe(document.querySelector('.carrusel-contenedor'));
-
-        // Funciones de Modales
-        function abrirModal(nombre, padrino) {
-            const modal = document.getElementById('modalAlumno');
-            document.getElementById('modalNombre').innerText = nombre;
-            document.getElementById('modalPadrino').innerText = "Padrino/Madrina: " + padrino;
-
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modal.firstElementChild.classList.remove('scale-95');
-            }, 10);
-        }
-
-        function cerrarModal() {
-            const modal = document.getElementById('modalAlumno');
-            modal.classList.add('opacity-0');
-            modal.firstElementChild.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        document.getElementById('modalAlumno').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) cerrarModal();
-        });
+        setInterval(() => {
+            if(!document.body.classList.contains('no-scroll')) {
+                moveCarousel(1);
+            }
+        }, 5000);
     </script>
 </body>
 </html>
